@@ -1,6 +1,6 @@
 # Vaporwave Void - Obsidian Theme
 
-A high-contrast, high-vapor, glass-morphism theme for Obsidian.md. 
+A high-contrast, high-vapor, glass-morphism theme for Obsidian (Dark Mode ONLY). 
 Designed for deep work in the digital void.
 
 <p align="center">
