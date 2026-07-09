@@ -1,8 +1,25 @@
 /* VAPORWAVE: PLATINUM MOBILE EDITION (THE FINAL FIX) */
 
+/* 0. THE PALETTE (Shared Neon Utilities)
+   Single source of truth for the theme's recurring colors and fonts.
+   Reference these with var() instead of repeating literals. */
+body {
+  --vv-magenta: #ff00ff; /* Hot pink primary accent */
+  --vv-cyan: #00ffff;    /* Electric cyan secondary accent */
+  --vv-void: #0d0216;    /* Deep void surface (modals, menus, drawers) */
+  --vv-black: #000000;   /* Pure black (code backgrounds) */
+  --vv-white: #ffffff;   /* Base text / hover */
+  --vv-purple: #b388ff;  /* Muted purple text */
+  --vv-plum: #1a0526;    /* Plum surface (ribbon, inline code) */
+  --vv-indigo: #4d0099;  /* Dark indigo (borders, scrollbar) */
+
+  --vv-font-mono: 'MesloLGMZ Propo', 'MesloLGS NF', 'Consolas', monospace;
+  --vv-font-heading: 'MesloLGMZ Propo', 'MesloLGS NF', 'JetBrains Mono', 'Consolas', monospace;
+}
+
 /* 1. THE BASEMENT (Main Gradient) */
 body {
-  background: linear-gradient(180deg, #120422 0%, #000000 100%) !important;
+  background: linear-gradient(180deg, #120422 0%, var(--vv-black) 100%) !important;
   background-attachment: fixed !important;
   
   /* GLOBAL TRANSPARENCY */
@@ -12,58 +29,58 @@ body {
   --background-secondary-alt: transparent !important;
   
   /* Text Defaults */
-  --text-normal: #ffffff !important;
-  --text-muted: #b388ff !important;
-  --interactive-accent: #ff00ff !important;
-  --text-on-accent: #ffffff !important;
+  --text-normal: var(--vv-white) !important;
+  --text-muted: var(--vv-purple) !important;
+  --interactive-accent: var(--vv-magenta) !important;
+  --text-on-accent: var(--vv-white) !important;
   
   /* Scrollbars */
-  --scrollbar-thumb-bg: #4d0099 !important;
-  --scrollbar-active-thumb-bg: #ff00ff !important;
+  --scrollbar-thumb-bg: var(--vv-indigo) !important;
+  --scrollbar-active-thumb-bg: var(--vv-magenta) !important;
 }
 
 /* 2. THE CONTROL PANEL (Variable Mapping) */
 .theme-dark {
   /* Vault & Nav */
-  --vault-profile-color: #b388ff !important;
-  --vault-profile-color-hover: #ffffff !important;
+  --vault-profile-color: var(--vv-purple) !important;
+  --vault-profile-color-hover: var(--vv-white) !important;
   --vault-profile-font-weight: bold !important;
   
-  --nav-item-color: #b388ff !important;
-  --nav-item-color-hover: #ffffff !important;
-  --nav-item-color-active: #00ffff !important;
-  --nav-item-color-selected: #ffffff !important;
+  --nav-item-color: var(--vv-purple) !important;
+  --nav-item-color-hover: var(--vv-white) !important;
+  --nav-item-color-active: var(--vv-cyan) !important;
+  --nav-item-color-selected: var(--vv-white) !important;
   
   --nav-item-background-hover: transparent !important;
   --nav-item-background-active: transparent !important;
   --nav-item-background-selected: transparent !important;
   
   --nav-collapse-icon-color: #6a4c93 !important;
-  --nav-collapse-icon-color-collapsed: #ff00ff !important;
+  --nav-collapse-icon-color-collapsed: var(--vv-magenta) !important;
   --nav-indentation-guide-color: rgba(179, 136, 255, 0.2) !important;
 
   /* Modals & Prompts */
-  --modal-background: #0d0216 !important;
-  --modal-border-color: #ff00ff !important;
+  --modal-background: var(--vv-void) !important;
+  --modal-border-color: var(--vv-magenta) !important;
   --modal-border-width: 1px !important;
   --modal-radius: 8px !important;
   
-  --menu-background: #0d0216 !important;
-  --popover-background: #0d0216 !important;
-  --prompt-background: #0d0216 !important;
-  --prompt-border-color: #ff00ff !important;
+  --menu-background: var(--vv-void) !important;
+  --popover-background: var(--vv-void) !important;
+  --prompt-background: var(--vv-void) !important;
+  --prompt-border-color: var(--vv-magenta) !important;
 
   /* Swatches */
   --swatch-radius: 4px !important;
   --swatch-height: 20px !important;
   --swatch-width: 20px !important;
-  --swatch-shadow: 0 0 8px #ff00ff !important;
+  --swatch-shadow: 0 0 8px var(--vv-magenta) !important;
 }
 
 /* 3. THE RIBBON */
 .workspace-ribbon.mod-left, .side-dock-ribbon {
-  background-color: #1a0526 !important;
-  border-right: 1px solid #ff00ff !important;
+  background-color: var(--vv-plum) !important;
+  border-right: 1px solid var(--vv-magenta) !important;
 }
 
 /* 4. THE FILE EXPLORER (Glass Mode) */
@@ -71,11 +88,11 @@ body {
   background-color: transparent !important;
 }
 .nav-file-title:hover, .nav-folder-title:hover {
-  text-shadow: 0 0 8px #ff00ff;
+  text-shadow: 0 0 8px var(--vv-magenta);
 }
 .nav-file-title.is-active, .nav-folder-title.is-active {
   background: linear-gradient(90deg, rgba(0, 245, 255, 0.15) 0%, transparent 100%) !important;
-  border-left: 2px solid #00ffff !important;
+  border-left: 2px solid var(--vv-cyan) !important;
   font-weight: bold !important;
 }
 
@@ -83,39 +100,39 @@ body {
 
 /* A. Live Preview Editor (No borders) */
 .HyperMD-codeblock-bg {
-  background-color: #000000 !important;
+  background-color: var(--vv-black) !important;
   border: none !important;
   border-radius: 0 !important;
 }
 
 /* B. Reading Mode / Preview (With borders) */
 .markdown-rendered pre {
-  background-color: #000000 !important;
-  border: 1px solid #ff00ff !important;
+  background-color: var(--vv-black) !important;
+  border: 1px solid var(--vv-magenta) !important;
   border-radius: 6px !important;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.8) !important;
 }
 
 /* C. Inline Code */
 code {
-  color: #00ffff !important;
-  background-color: #1a0526 !important;
-  font-family: 'MesloLGMZ Propo', 'MesloLGS NF', 'Consolas', monospace !important;
+  color: var(--vv-cyan) !important;
+  background-color: var(--vv-plum) !important;
+  font-family: var(--vv-font-mono) !important;
 }
 
 /* D. HEADINGS (The Full Neon Spectrum) */
 .markdown-rendered h1, .markdown-rendered h2, .markdown-rendered h3,
 .markdown-rendered h4, .markdown-rendered h5, .markdown-rendered h6,
 .cm-header-1, .cm-header-2, .cm-header-3, .cm-header-4, .cm-header-5, .cm-header-6 {
-  font-family: 'MesloLGMZ Propo', 'MesloLGS NF', 'JetBrains Mono', 'Consolas', monospace !important;
+  font-family: var(--vv-font-heading) !important;
   font-weight: bold !important;
 }
 
 /* H1: Hot Pink */
-.markdown-rendered h1, .cm-header-1 { color: #ff00ff !important; border-bottom: 1px solid #4d0099 !important; }
+.markdown-rendered h1, .cm-header-1 { color: var(--vv-magenta) !important; border-bottom: 1px solid var(--vv-indigo) !important; }
 
 /* H2: Electric Cyan */
-.markdown-rendered h2, .cm-header-2 { color: #00ffff !important; }
+.markdown-rendered h2, .cm-header-2 { color: var(--vv-cyan) !important; }
 
 /* H3: Electric Purple */
 .markdown-rendered h3, .cm-header-3 { color: #bd00ff !important; }
@@ -132,10 +149,10 @@ code {
 
 /* E. QUOTES (The Terminal Look) */
 blockquote, .cm-quote {
-  font-family: 'MesloLGMZ Propo', 'MesloLGS NF', 'Consolas', monospace !important;
+  font-family: var(--vv-font-mono) !important;
   font-style: italic !important;
   color: #d6b3ff !important; 
-  border-left: 3px solid #00ffff !important; 
+  border-left: 3px solid var(--vv-cyan) !important; 
   background: rgba(26, 5, 38, 0.6) !important; 
   border-radius: 0 4px 4px 0 !important;
 }
@@ -145,14 +162,14 @@ blockquote, .cm-quote {
 .modal-container .prompt, 
 .modal, 
 .prompt {
-  background-color: #0d0216 !important;
-  background: #0d0216 !important;
+  background-color: var(--vv-void) !important;
+  background: var(--vv-void) !important;
   
-  --text-normal: #ffffff !important;
-  --text-muted: #b388ff !important;
-  --background-primary: #0d0216 !important;
+  --text-normal: var(--vv-white) !important;
+  --text-muted: var(--vv-purple) !important;
+  --background-primary: var(--vv-void) !important;
   
-  border: 1px solid #ff00ff !important;
+  border: 1px solid var(--vv-magenta) !important;
   box-shadow: 0 0 50px rgba(0, 0, 0, 0.95) !important;
   
   position: relative !important;
@@ -161,9 +178,9 @@ blockquote, .cm-quote {
 
 /* The Input Box */
 .prompt input.prompt-input {
-  background-color: #000000 !important;
-  border: 1px solid #00ffff !important;
-  color: #00ffff !important;
+  background-color: var(--vv-black) !important;
+  border: 1px solid var(--vv-cyan) !important;
+  color: var(--vv-cyan) !important;
   font-weight: bold !important;
   text-shadow: 0 0 5px rgba(0, 255, 255, 0.5);
 }
@@ -174,12 +191,12 @@ blockquote, .cm-quote {
 
 /* The Suggestions */
 .suggestion-item {
-  color: #ffffff !important;
+  color: var(--vv-white) !important;
 }
 
 .suggestion-item.is-selected {
-  background: linear-gradient(90deg, #ff00ff 0%, #4d0099 100%) !important;
-  color: #ffffff !important;
+  background: linear-gradient(90deg, var(--vv-magenta) 0%, var(--vv-indigo) 100%) !important;
+  color: var(--vv-white) !important;
 }
 
 /* ================================================================= */
@@ -190,9 +207,9 @@ blockquote, .cm-quote {
 /* Force the Sidebar Drawer to be OPAQUE and ON TOP */
 body.is-mobile .workspace-drawer.mod-left,
 body.is-mobile .workspace-split.mod-left-split {
-    background-color: #0d0216 !important; /* Solid Void Color */
+    background-color: var(--vv-void) !important; /* Solid Void Color */
     background-image: none !important;
-    border-right: 1px solid #ff00ff !important;
+    border-right: 1px solid var(--vv-magenta) !important;
     box-shadow: 10px 0 50px rgba(0,0,0,0.95) !important; /* Deep shadow to separate from text */
     z-index: 9999 !important;
 }
@@ -200,13 +217,13 @@ body.is-mobile .workspace-split.mod-left-split {
 /* Fix the transparency inside the file list on mobile */
 body.is-mobile .workspace-drawer.mod-left .workspace-leaf,
 body.is-mobile .workspace-drawer.mod-left .nav-files-container {
-    background-color: #0d0216 !important;
+    background-color: var(--vv-void) !important;
 }
 
 /* Ensure the Header ("Files") doesn't bleed */
 body.is-mobile .nav-header {
-    background-color: #0d0216 !important;
-    border-bottom: 1px solid #4d0099 !important;
+    background-color: var(--vv-void) !important;
+    border-bottom: 1px solid var(--vv-indigo) !important;
     z-index: 2 !important;
 }
 
